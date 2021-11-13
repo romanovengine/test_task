@@ -9,11 +9,15 @@ class Parser():
     months = [
         'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
     ]
+
     html = ''
+
     film_list = []
+    
     def __init__(self, url):
         response = requests.get(url, headers=HEADERS)
         self.html = response
+
 
     def img_to_date(self, imgs):
         #Возможно, имело смысл это оформить покрасивее, вынести повторяющийся код в отдельный статический метод.
@@ -37,6 +41,8 @@ class Parser():
     def get_html(self, url):
         response = requests.get(url, headers=HEADERS)
         return response
+
+
     def parse(self):
         html = self.html
         soup = BeautifulSoup(html.text, features='html.parser')
