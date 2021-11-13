@@ -49,7 +49,7 @@ class Parser():
         items = soup.find('div', class_='prem_list')
         films = items.find_all('div', class_='premier_item')
         for film in films:
-            #print(film)
+            print(film.text)
 
             name = film.find('span', class_="name_big").text #Здесь получили название на русском
             name_eng = film.find_all('span')[1].text #Здесь получили название на английском
@@ -63,7 +63,9 @@ class Parser():
                 votes = ' '
                 film_rating = ' '
 
-            company = film.find('s', class_='company').text #Получили компанию
+
+
+'''            company = film.find('s', class_='company').text #Получили компанию
             dates = film.find('div', class_='day').find_all('img')
             date = self.img_to_date(dates) #Дата премьеры
             genres = film.find('div', class_='textBlock').find_all('span')[3].text.split(',') #Жанры
@@ -84,7 +86,7 @@ class Parser():
 
     def save_json(self, list):
         with open('films.json', 'w') as f:
-            json.dump(list, f, indent=4)
+            json.dump(list, f, indent=4)'''
 
 
 

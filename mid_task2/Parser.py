@@ -12,7 +12,7 @@ class Parser():
 
     html = ''
 
-    film_list = []
+    film_list = dict()
     
     def __init__(self, url, page):
         response = requests.get(url, headers=HEADERS, params={'token': 'fHJil4NQ0NIHCGiDpQIDpQNkKaEzDaUXgZIPqKLeBDM', 'page': page, 'ajax': 'true'})
@@ -58,19 +58,20 @@ class Parser():
             dates = film.find('div', class_='day').find_all('img')
             date = self.img_to_date(dates)  # Дата премьеры
             company = film.find('s', class_='company').text  # Получили компанию
-            print(name, name_eng, film_link, date, company)
-            self.film_list.append({
-                film_id: {
+
+            self.film_list[film_id] = {
                     'name': name,
                     'name_eng': name_eng.split('(')[0].replace("  ", ""),
                     'film_link': film_link,
                     'date': date,
                     'company': company
                 }
-            })
-            self.save_json(self.film_list)
 
-    def save_json(self, list):
+
+        return self.film_list
+
+    @staticmethod
+    def save_json(list):
         with open('films.json', 'a') as f:
             json.dump(list, f, indent=4)
 
