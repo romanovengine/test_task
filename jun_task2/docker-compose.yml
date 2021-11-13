@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: my_test_app2
+    command: python main.py
