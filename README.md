@@ -14,6 +14,13 @@
 <code>python main.py</code></li>
 </ul>
 <p>Результат выполнения программы отобразится в консоли</p>
+<h5>Запуск при помощи Docker</h5>
+<ul>
+<li>В папке с файлами программы запустить терминал Docker</li>
+ <li>Ввести команду <code>docker-compose build</code></li>
+ <li>Дождаться выполнения команды</li>
+ <li>Ввести команду <code>docker-compose up</code></li>
+</ul>
 
 <h2>Тестовая задача Mid#1</h2>
 <hr>
